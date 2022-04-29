@@ -22,7 +22,7 @@ builds:
 dist: release
 
 archives:
-  - name_template: "{{ .Binary }}-{{ .OS }}-{{ .Arch }}"
+  - name_template: "{{ .Binary }}-{{ .Os }}-{{ .Arch }}"
     replacements:
       darwin: darwin
       linux: linux
