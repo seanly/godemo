@@ -14,7 +14,7 @@ type engine struct {
 }
 
 // NewEngine create engine object and add routes
-func NewEngine(mode string) *engine { //nolint
+func NewEngine(mode string) *engine {
 	s := &engine{mode: mode}
 	gin.SetMode(s.mode)
 
