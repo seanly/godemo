@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Serve http serve
 func Serve(ctx context.Context) error {
 
 	r := gin.Default()
