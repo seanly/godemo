@@ -61,7 +61,6 @@ jobs:
         uses: reviewdog/action-golangci-lint@v2
         with:
           golangci_lint_flags: "--disable-all -E golint"
-          tool_name: golint # Change reporter name.
           level: warning # GitHub Status Check won't become failure with this level.
   security:
     runs-on: ubuntu-20.04
