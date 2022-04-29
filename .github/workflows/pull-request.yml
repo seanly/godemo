@@ -57,7 +57,12 @@ jobs:
         with:
           # Optional: version of golangci-lint to use in form of v1.2 or v1.2.3 or `latest` to use the latest version
           version: v1.45.2
-
+      - name: golangci-lint
+        uses: reviewdog/action-golangci-lint@v2
+        with:
+          golangci_lint_flags: "--disable-all -E golint"
+          tool_name: golint # Change reporter name.
+          level: warning # GitHub Status Check won't become failure with this level.
   security:
     runs-on: ubuntu-20.04
     env:
