@@ -18,7 +18,11 @@ func NewEngine(mode string) *engine {
 	s := &engine{mode: mode}
 	gin.SetMode(s.mode)
 
-	g := s.Engine
+	g := gin.New()
+	defer func() {
+		s.Engine = g
+	}()
+
 	g.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
