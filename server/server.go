@@ -14,7 +14,7 @@ type engine struct {
 }
 
 // NewEngine create engine object and add routes
-func NewEngine(mode string) *engine {
+func NewEngine(mode string) *engine { //nolint: errcheck
 	s := &engine{mode: mode}
 	gin.SetMode(s.mode)
 
@@ -33,7 +33,7 @@ func Serve(ctx context.Context) error {
 
 	engine := NewEngine("test")
 	server := &http.Server{
-		Addr: ":3000", Handler: engine.Engine,
+		Addr: ":3000", Handler: engine,
 	}
 
 	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
