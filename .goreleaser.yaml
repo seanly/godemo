@@ -1,0 +1,47 @@
+# This is an example .goreleaser.yml file with some sensible defaults.
+# Make sure to check the documentation at https://goreleaser.com
+
+project_name: godemo
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    binary: godemo
+    goarch:
+      - amd64
+    goos:
+      - linux
+      - windows
+      - darwin
+    hooks:
+      post:
+        - upx "{{ .Path }}"
+    ldflags:
+      - -w
+      - -s
+dist: release
+
+archives:
+  - name_template: "{{ .Binary }}-{{ .OS }}-{{ .Arch }}"
+    replacements:
+      darwin: darwin
+      linux: linux
+      windows: windows
+      amd64: amd64
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - READMD.md
+
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next-{{ .ShortCommit }}"
+changelog:
+  sort: asc
+  skip: true
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
