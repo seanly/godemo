@@ -8,7 +8,6 @@ import (
 	"syscall"
 )
 
-
 func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGTERM, syscall.SIGINT)
 
