@@ -2,37 +2,12 @@ package server
 
 import (
 	"context"
-	"github.com/gin-gonic/gin"
+	"godemo/server/rest"
 	"log"
 	"net/http"
 	"os"
 	"time"
 )
-
-type engine struct {
-	*gin.Engine
-
-	mode string
-}
-
-// NewEngine create engine object and add routes
-func NewEngine(mode string) *engine {
-	s := &engine{mode: mode}
-	gin.SetMode(s.mode)
-
-	g := gin.New()
-	defer func() {
-		s.Engine = g
-	}()
-
-	g.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-
-	return s
-}
 
 // Serve http serve
 func Serve(ctx context.Context) error {
@@ -45,7 +20,7 @@ func Serve(ctx context.Context) error {
 
 	log.Printf("Serve[%s] started at %s", address, time.Now())
 
-	engine := NewEngine("test")
+	engine := rest.NewEngine("test")
 	server := &http.Server{
 		Addr: address, Handler: engine,
 	}
