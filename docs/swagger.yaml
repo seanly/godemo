@@ -1,0 +1,19 @@
+info:
+  contact: {}
+paths:
+  /api/ping:
+    get:
+      consumes:
+      - application/json
+      description: response ping check.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'map[string]string - {message: ''pong''}'
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: check ping
+swagger: "2.0"
