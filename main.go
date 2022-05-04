@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"godemo/server"
+	"godemo/pkg/server"
 	"log"
 	"os/signal"
 	"syscall"

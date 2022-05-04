@@ -2,7 +2,7 @@ package server
 
 import (
 	"context"
-	"godemo/server/rest"
+	"godemo/pkg/server/rest"
 	"log"
 	"net/http"
 	"os"
