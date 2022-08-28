@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: godemo
+  name: godemo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: godemo
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: godemo
+    spec:
+      containers:
+      - image: godemo
+        name: godemo
+        resources: {}
